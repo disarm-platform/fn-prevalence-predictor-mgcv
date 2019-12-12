@@ -6,6 +6,7 @@
   library(sp)
   library(DiSARM)
   library(mgcv)
+  library(RANN)
   
   function(params) {
     
@@ -125,7 +126,8 @@
                                    batch.size = params$batch_size,
                                    delta = delta,
                                    criterion = criterion,
-                                   poly = NULL)
+                                   poly = NULL,
+                                   plotit = FALSE)
               if(nrow(new_batch$sample.locs$added.sample) < params$batch_size){
                 delta <- delta*0.9
               }else{
@@ -133,9 +135,12 @@
               }
         }
         
-        new_batch_idx <- unlist(st_intersects(new_batch$sample.locs$added.sample,
-                                       obj1))
+        # Get indeces of those adaptively selected
+        nearest <- RANN::nn2(st_coordinates(new_batch$sample.locs$added.sample),
+                                   st_coordinates(obj1), k=1)
+        new_batch_idx <- which(nearest$nn.dists==0)
         
+        # Add adaptively selected column
         point_data$adaptively_selected <- FALSE
         point_data$adaptively_selected[new_batch_idx] <- TRUE
     }
