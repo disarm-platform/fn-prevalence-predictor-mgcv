@@ -12,4 +12,5 @@ function(params) {
      params[['uncertainty_fieldname']]!="exceedance_uncertainty"){
     stop('"exceedance_threshold" ignored as using "prevalence_bci_width" to adaptively select samples')
   }
+  return(params)
 }
