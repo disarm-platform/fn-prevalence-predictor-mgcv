@@ -1,4 +1,3 @@
-function(params) {
 
   #suppressPackageStartupMessages(library(spaMM))
   suppressPackageStartupMessages(library(sf))
@@ -142,6 +141,6 @@ function(params) {
     }
     
     return(geojson_list(point_data))
-  }
+  
   
 }
