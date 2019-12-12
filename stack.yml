@@ -5,4 +5,4 @@ functions:
   fn-prevalence-predictor-mgcv:
     lang: r-geospatial
     handler: ./function
-    image: disarm/fn-prevalence-predictor-mgcv:0.0.1
+    image: disarm/fn-prevalence-predictor-mgcv:0.0.2
