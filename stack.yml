@@ -1,6 +1,6 @@
 provider:
   name: openfaas
-  gateway: faas.srv.disarm.io
+  gateway: https://faas.srv.disarm.io
 functions:
   fn-prevalence-predictor-mgcv:
     lang: r-geospatial
