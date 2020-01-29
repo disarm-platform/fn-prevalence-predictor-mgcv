@@ -6892,5 +6892,5 @@
   "exceedance_threshold": 0.1,
   "layer_names": ["elev_m", "bioclim1", "bioclim4", "dist_to_water_m"],
   "batch_size": 10,
-  "uncertainty_fieldname": "exceedance_uncertainty"
+  "uncertainty_fieldname": "exceedance_probability"
 }

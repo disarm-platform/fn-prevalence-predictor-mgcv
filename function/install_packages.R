@@ -3,21 +3,12 @@
 
 # For some reason `geojsonio` is not yet in rocker/geospatial. 
 # Remove from below if you don't need it.
-install.packages("config",repos="http://cran.us.r-project.org")
-library(config)
+# install.packages("config",repos="http://cran.us.r-project.org")
+# library(config)
 install.packages(c('geojsonio',
-                   'jsonlite',
-                   'ranger',
-                   'httr',
-                   'devtools',
-                   'RANN', 
-                   'caret', 
-                   'pdist', 
-                   'spaMM', 
-                   'velox', 
-                   'wesanderson'))
+                   'jsonlite'))
 
 library(devtools)
-devtools::install_github("disarm-platform/disarm")
-install_github("tlverse/hal9001", build_vignettes = FALSE)
-install_github("r-spatial/lwgeom@1cd8e1bac5c3ae8ce56ef5368b8a87efa00e716d")
+devtools::install_github("disarm-platform/disarmr")
+#install_github("tlverse/hal9001", build_vignettes = FALSE)
+#install_github("r-spatial/lwgeom@1cd8e1bac5c3ae8ce56ef5368b8a87efa00e716d")
