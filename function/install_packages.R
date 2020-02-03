@@ -6,7 +6,8 @@
 # install.packages("config",repos="http://cran.us.r-project.org")
 # library(config)
 install.packages(c('geojsonio',
-                   'jsonlite'))
+                   'jsonlite',
+                   'devtools'))
 
 library(devtools)
 devtools::install_github("disarm-platform/disarmr")
