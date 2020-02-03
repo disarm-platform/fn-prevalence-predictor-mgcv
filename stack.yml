@@ -6,7 +6,10 @@ functions:
     lang: r-geospatial
     handler: ./function
     image: disarm/fn-prevalence-predictor-mgcv:0.0.5
-    write_timeout: 300
-    read_timeout: 300
-    exec_timeout: 300
-    combine_output: false
+    environment:
+      write_timeout: 300
+      read_timeout: 300
+      exec_timeout: 300
+      combine_output: false
+    labels:
+      com.openfaas.scale.zero: true
