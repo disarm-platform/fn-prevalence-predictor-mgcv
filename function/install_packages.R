@@ -10,4 +10,4 @@ install.packages(c('geojsonio',
                    'devtools'))
 
 library(devtools)
-devtools::install_github("disarm-platform/disarmr@v0.0.1")
+devtools::install_github("disarm-platform/disarmr@v0.0.2")
