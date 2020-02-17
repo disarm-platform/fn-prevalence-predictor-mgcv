@@ -5,11 +5,12 @@ functions:
   fn-prevalence-predictor-mgcv:
     lang: r-geospatial
     handler: ./function
-    image: disarm/fn-prevalence-predictor-mgcv:0.0.7
+    image: disarm/fn-prevalence-predictor-mgcv:0.0.8
     environment:
       write_timeout: 300
       read_timeout: 300
       exec_timeout: 300
       combine_output: false
+      write_debug: true
     labels:
       com.openfaas.scale.zero: true

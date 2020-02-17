@@ -10,6 +10,4 @@ install.packages(c('geojsonio',
                    'devtools'))
 
 library(devtools)
-devtools::install_github("disarm-platform/disarmr")
-#install_github("tlverse/hal9001", build_vignettes = FALSE)
-#install_github("r-spatial/lwgeom@1cd8e1bac5c3ae8ce56ef5368b8a87efa00e716d")
+devtools::install_github("disarm-platform/disarmr@v0.0.1")
