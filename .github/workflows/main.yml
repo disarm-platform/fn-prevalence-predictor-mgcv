@@ -1,0 +1,26 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin
+    - uses: LucasRoesler/openfaas-action/template_pull@master
+      name: Fetch Template
+      with:
+        store_url: https://github.com/disarm-platform/faas-templates.git
+    - uses: LucasRoesler/openfaas-action/build@master
+      name: Build
+      with:
+        path: "stack.yml"
+        tag: "sha"
+    - uses: LucasRoesler/openfaas-action/push@master
+      name: Push image
+      if: "success() && github.ref == 'refs/heads/master' "
+      with:
+        path: "stack.yml"
+        tag: "sha"
