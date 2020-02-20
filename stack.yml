@@ -5,7 +5,7 @@ functions:
   fn-prevalence-predictor-mgcv:
     lang: r-geospatial-spamm
     handler: ./function
-    image: disarm/fn-prevalence-predictor-mgcv-testbuild:0.0.8
+    image: disarm/fn-prevalence-predictor-mgcv:0.0.8
     environment:
       write_timeout: 300
       read_timeout: 300
