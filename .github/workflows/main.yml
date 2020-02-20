@@ -27,6 +27,7 @@ jobs:
           username: ${{secrets.DOCKERHUB_USERNAME}}
           password: "${{ secrets.DOCKERHUB_ACCESS_TOKEN }}"
           image_name: disarm/fn-prevalence-predictor-mgcv
+          context: './build/fn-prevalence-predictor-mgcv/'
 
       - uses: LucasRoesler/openfaas-action/push@master
         name: Push image
