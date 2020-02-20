@@ -13,11 +13,13 @@ jobs:
       name: Fetch Template
       with:
         repository_url: https://github.com/disarm-platform/faas-templates.git
-    - uses: LucasRoesler/openfaas-action/build@master
-      name: Build
+
+    - uses: whoan/docker-build-with-cache-action@v3
       with:
-        path: "stack.yml"
-        tag: "sha"
+        username: ${{secrets.DOCKERHUB_USERNAME}}
+        password: "${{ secrets.DOCKERHUB_ACCESS_TOKEN }}"
+        image_name: whoan/node
+
     - uses: LucasRoesler/openfaas-action/push@master
       name: Push image
       if: "success()"
