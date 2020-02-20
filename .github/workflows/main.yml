@@ -16,6 +16,12 @@ jobs:
         with:
           repository_url: https://github.com/disarm-platform/faas-templates.git
 
+      - uses: locational/openfaas-action/build-shrinkwrap@master
+        name: Build shrinkwrap
+        with:
+          path: "stack.yml"
+          tag: "sha"
+
       - uses: whoan/docker-build-with-cache-action@v3
         with:
           username: ${{secrets.DOCKERHUB_USERNAME}}
