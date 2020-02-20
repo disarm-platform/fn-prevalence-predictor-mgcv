@@ -10,7 +10,7 @@ A nested JSON object containing:
   - `n_positive` - {integer} Required. Number of individuals positive at each location (‘null’ for points without observations)
   - `id` - {string} Optional id for each point. Must be unique. If not provided, 1:n (where n is the number of Features in the FeatureCollection) will be used.
   
-- `exceedance_threshold` - {numeric} Optional. Defines the exceedance threshold used to calculate exceedance probabilities. Must be >0 and <1. 
+- `exceedance_threshold` - {numeric} Required. Defines the exceedance threshold used to calculate exceedance probabilities. Must be >0 and <1. 
 
 - `layer_names` - {array of strings} Optional. Default is to run with only latitude and longitude. Names relating to the covariate to use to model and predict. See [here](https://github.com/disarm-platform/fn-covariate-extractor/blob/master/SPECS.md) for options.
 

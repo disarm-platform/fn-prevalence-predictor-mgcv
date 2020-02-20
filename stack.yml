@@ -3,7 +3,7 @@ provider:
   gateway: https://faas.srv.disarm.io
 functions:
   fn-prevalence-predictor-mgcv:
-    lang: r-geospatial
+    lang: r-geospatial-spamm
     handler: ./function
     image: disarm/fn-prevalence-predictor-mgcv:0.0.8
     environment:
