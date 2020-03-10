@@ -14,10 +14,17 @@ A nested JSON object containing:
 
 - `layer_names` - {array of strings} Optional. Default is to run with only latitude and longitude. Names relating to the covariate to use to model and predict. See [here](https://github.com/disarm-platform/fn-covariate-extractor/blob/master/SPECS.md) for options.
 
+- `additional_covariates` - {array of strings} Optional vector of column names of `point_data` referencing additional covariates to include in the model. Defulats to NULL.
+
+-  `covariate_extractor_url` - {string} Optional. The function currently makes use of the temporary DiSARM API function `fn-covariate-extractor` to extract values of `layer_names` at locations specified in `point_data`. If this algorithm is hostedsomewhere other than the DiSARM API, specify the URL here. 
+
 - `batch_size` - {integer} Optional. The number of adaptively sampled locations to select.
 
 - `uncertainty_fieldname` - {string} Required if 'batch_size' is specified. The field to use to conduct adaptive sampling. To identify optimal locations in order to increase precision of prevalence predictions, choose 'prevalence_bci_width'. To identify optimal locations in order to increase classification accuracy (where classes are defined using exceedance threshold) choose 'exceedance_uncertainty'. Defaults to `prevalence_bci_width`.
 
+- `seed` - {integer} Optional. The random seed to use. Defaults to 1.
+
+- `v` - {integer} Optional. Number of folds to use for the machine learning cross-validation step. Defaults to 10. 
 
 ## Constraints
 
