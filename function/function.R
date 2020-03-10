@@ -26,12 +26,18 @@ function(params) {
       v <- 10
     }
     
+    if(is.null(params$covariate_extractor_url)){
+      covariate_extractor_url <- "https://faas.srv.disarm.io/function/fn-covariate-extractor"
+    }else{
+      covariate_extractor_url <- params$covariate_extractor_url
+    }
+    
     # Read into memory
-    point_data <- st_read(as.json(params$point_data), quiet = TRUE)
+    point_data <- st_read(rjson::toJSON(params$point_data), quiet = T)
     
     # define params function
-    layer_names = params$layer_names
-    additional_covariates = params$additional_covariates
+    layer_names = unlist(params$layer_names)
+    additional_covariates = unlist(params$additional_covariates)
     exceedance_threshold = params$exceedance_threshold
     batch_size = params$batch_size
     uncertainty_fieldname = params$uncertainty_fieldname
@@ -84,7 +90,7 @@ function(params) {
       }
       
       opt_range <- optimal_range(y = "cbind(n_positive, n_neg)", 
-                                 x = "cv_predictions",
+                                 x = "cv_predictions_logit",
                                  coords_cols = c("X", "Y"),
                                  min_dist  = min(diff(range(train_data$X)), diff(range(train_data$Y)))/100, 
                                  max_dist = max(min(diff(range(train_data$X)), diff(range(train_data$Y))))/2, 
@@ -92,7 +98,7 @@ function(params) {
                                  model_data = train_data, 
                                  k=k)
       
-      gam_mod <- gam(cbind(n_positive, n_neg) ~ cv_predictions +
+      gam_mod <- gam(cbind(n_positive, n_neg) ~ cv_predictions_logit +
                        s(X, Y, bs="gp", k=k, m=c(3, opt_range$best_m)),
                      data = train_data,
                      family="binomial")
@@ -124,7 +130,7 @@ function(params) {
     }    
     
     # Get posterior metrics
-    mod_data$cv_predictions <- mod_data$fitted_predictions
+    mod_data$cv_predictions_logit <- mod_data$fitted_predictions_logit
     posterior_metrics <- gam_posterior_metrics(gam_mod,
                                                mod_data,
                                                500,

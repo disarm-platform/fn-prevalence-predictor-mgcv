@@ -72,21 +72,23 @@ cv_ml <- function(points, layer_names, model_type = "randomforest", k = 20,
       pred_data[[fix_cov$cov_name[j]]] <- fix_cov$cov_val[j]
       }
     }
-    
+
     fitted_predictions <- predict(rf_fit, pred_data)
     points$fitted_predictions <- fitted_predictions$predictions[,2]
     fitted_predictions_adj <- points$fitted_predictions 
-    fitted_predictions_adj[fitted_predictions_adj==0] <- .Machine$double.eps
-    fitted_predictions_adj[fitted_predictions_adj==1] <- 1 - .Machine$double.eps
+    half_positive <- 0.5 / max(points$n_trials, na.rm=T)
+    fitted_predictions_adj[fitted_predictions_adj==0] <- half_positive
+    fitted_predictions_adj[fitted_predictions_adj==1] <- 1 - half_positive
     points$fitted_predictions_logit <- log(fitted_predictions_adj / (1-fitted_predictions_adj))
     
     points$cv_predictions <- NA
     points$cv_predictions[points_df_train$row_id[valid_indeces]] <- unlist(cv_predictions)
     cv_predictions_adj <- points$cv_predictions
-    cv_predictions_adj[cv_predictions_adj==0] <- .Machine$double.eps
-    cv_predictions_adj[cv_predictions_adj==1] <- 1 - .Machine$double.eps
+    cv_predictions_adj[cv_predictions_adj==0] <- half_positive
+    cv_predictions_adj[cv_predictions_adj==1] <- 1 - half_positive
     points$cv_predictions_logit <- log(cv_predictions_adj / (1-cv_predictions_adj))
   }
+  browser()
 
   if(model_type == "randomforest"){
     importance = data.frame(rf_fit$variable.importance)
