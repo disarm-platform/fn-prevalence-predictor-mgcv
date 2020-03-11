@@ -5,9 +5,9 @@ library(sp)
 library(mgcv) 
 library(RANN)
 
-gam_posterior_metrics <- dget('function/gam_posterior_metrics.r')
-cv_ml <- dget('function/cv_ml.r')
-optimal_range <- dget('function/optimal_range.r')
+gam_posterior_metrics <- dget('function/gam_posterior_metrics.R')
+cv_ml <- dget('function/cv_ml.R')
+optimal_range <- dget('function/optimal_range.R')
 
 
 function(params) {
