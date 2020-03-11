@@ -14,5 +14,6 @@ install.packages(c('geojsonio',
                    'httr',
                    'caret',
                    'parallel',
-                   'spaMM'))
+                   'spaMM',
+                   'rjson'))
 
