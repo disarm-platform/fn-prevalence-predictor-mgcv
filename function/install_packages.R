@@ -7,7 +7,11 @@
 # library(config)
 install.packages(c('geojsonio',
                    'jsonlite',
-                   'devtools'))
+                   'devtools',
+                   'ranger',
+                   'mgcv',
+                   'RANN',
+                   'httr',
+                   'caret',
+                   'parallel'))
 
-library(devtools)
-devtools::install_github("disarm-platform/disarmr@v0.0.2")
