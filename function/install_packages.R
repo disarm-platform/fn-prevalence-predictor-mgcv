@@ -13,5 +13,6 @@ install.packages(c('geojsonio',
                    'RANN',
                    'httr',
                    'caret',
-                   'parallel'))
+                   'parallel',
+                   'spaMM'))
 

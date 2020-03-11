@@ -88,7 +88,6 @@ cv_ml <- function(points, layer_names, model_type = "randomforest", k = 20,
     cv_predictions_adj[cv_predictions_adj==1] <- 1 - half_positive
     points$cv_predictions_logit <- log(cv_predictions_adj / (1-cv_predictions_adj))
   }
-  browser()
 
   if(model_type == "randomforest"){
     importance = data.frame(rf_fit$variable.importance)
