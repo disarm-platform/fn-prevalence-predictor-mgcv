@@ -12,7 +12,7 @@ choose_batch <- dget('function/choose_batch.R')
 
 
 function(params) {
-    
+
     # Set defaults
     if(!is.null(params$seed)){
       seed <- params$seed
@@ -32,7 +32,7 @@ function(params) {
     }else{
       covariate_extractor_url <- params$covariate_extractor_url
     }
-    
+
     # Read into memory
     point_data <- st_read(rjson::toJSON(params$point_data), quiet = T)
     
