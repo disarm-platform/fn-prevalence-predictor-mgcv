@@ -1,6 +1,8 @@
 # fn-prevalence-predictor-mgcv
 
-Give us a bunch of GeoJSON points with numbers examined and numbers positive, as well as a GeoJSON of prediction points, and we'll predict the probability of occurrence at each prediction point.
+Give us a bunch of GeoJSON points with numbers examined and numbers positive, as well as a GeoJSON of prediction points, and we'll predict the probability of occurrence at each prediction point as well as the uncertainty and exceedance probability (probability that prevalence is greater than a threshold). Fits a geoadditive model using `mgcv` package and uses cross-validated predictions from a random forest using ecological/environmental variables as a covariate. The function also allows users to obtain the locations of surther sites to survey in order to minimize hotspot classification error. 
+
+See [here](https://www.medrxiv.org/content/10.1101/2020.01.10.20016964v1) for an explanation of the method which is similar except here `mgcv` (geoadditive model) is used to fit the spatial model instead of `spaMM` (geostatistical model). This is done to increase computational speed.
 
 ## Parameters
 
@@ -28,8 +30,8 @@ A nested JSON object containing:
 
 ## Constraints
 
-- maximum number of points/features
-- maximum number of layers is XX
+- maximum number of points/features (being established)
+- maximum number of layers is currently unknown but likely to be fine up to 25 covariates.
 - can only include points within a single country
 
 ## Response
