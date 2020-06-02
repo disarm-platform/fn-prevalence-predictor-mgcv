@@ -13,8 +13,8 @@
 #' @import parallel ranger caret
 #' @export
 
-fit_rf_parallel <- dget('function/fit_rf_parallel.r')
-folds_list_to_df_list <- dget('function/folds_list_to_df_list.r')
+fit_rf_parallel <- dget('function/fit_rf_parallel.R')
+folds_list_to_df_list <- dget('function/folds_list_to_df_list.R')
 
 cv_ml <- function(points, layer_names, model_type = "randomforest", k = 20,
                   fix_cov=NULL) {
