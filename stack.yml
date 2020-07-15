@@ -5,11 +5,11 @@ functions:
   fn-prevalence-predictor-mgcv:
     lang: r-geospatial
     handler: ./function
-    image: disarm/fn-prevalence-predictor-mgcv:0.1.0
+    image: disarm/fn-prevalence-predictor-mgcv:0.1.1
     environment:
-      write_timeout: 300
-      read_timeout: 300
-      exec_timeout: 300
+      write_timeout: 600
+      read_timeout: 600
+      exec_timeout: 600
       combine_output: false
       write_debug: true
     labels:
