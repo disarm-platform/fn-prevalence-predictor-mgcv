@@ -63,7 +63,7 @@ function(params) {
             url = covariate_extractor_url,
             body = as.json(cov_ext_input_data_list),
             content_type_json(),
-            timeout(600)
+            timeout(900)
           )
         
         # Get contents of the response
