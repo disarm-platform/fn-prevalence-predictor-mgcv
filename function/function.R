@@ -4,6 +4,7 @@ library(httr)
 library(sp) 
 library(mgcv) 
 library(RANN)
+library(jsonlite)
 
 gam_posterior_metrics <- dget('function/gam_posterior_metrics.R')
 cv_ml <- dget('function/cv_ml.R')
@@ -34,7 +35,7 @@ function(params) {
     }
 
     # Read into memory
-    point_data <- st_read(rjson::toJSON(params$point_data), quiet = T)
+    point_data <- st_read(jsonlite::toJSON(params$point_data, auto_unbox = TRUE), quiet = T)
     
     # define params function
     layer_names = unlist(params$layer_names)
